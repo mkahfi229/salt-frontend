@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SALT Technical Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+</head>
+<body>
+    <h1>Tambah Konsumen Baru</h1>
+    <form action="add" method="post">
+        <table>
+            <tr>
+                <td>
+                    <label>Nama</label>
+                </td>
+                <td>
+                    <input name="nama" id="nama" type="text" placeholder="" maxlength="100" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Alamat</label>
+                </td>
+                <td>
+                    <input name="alamat" id="alamat" type="text" placeholder="" maxlength="200" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Kota</label>
+                </td>
+                <td>
+                    <input name="kota" id="kota" type="text" placeholder="" maxlength="100" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Provinsi</label>
+                </td>
+                <td>
+                    <input name="provinsi" id="provinsi" type="text" placeholder="" maxlength="100" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Status</label>
+                </td>
+                <td>
+                    <select name="status" id="status" >
+                        <option value="1">Aktif</option>
+                        <option value="0">Non-Aktif</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">
+                        Tambah
+                    </button>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <br>
+    </form>
+    <h1>List Konsumen</h1>
+    <div>
+        <div style="float: right; width: 50%;">
+        <h3>Cari Berdasarkan:</h3>
+        <form action="search" method="post">
+            <label>Id : </label>
+            <input name="idfilter" id="id_filter" type="text" placeholder="" />
+            <button>Cari</button>
+        </form>
+        </div>
+        <br>
+        <div id="table_konsumer">
+            <table id="konsumer_list" class="table table-striped" style="width: 50%;">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Kota</th>
+                    <th>Provinsi</th>
+                    <th>Tanggal Registrasi</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="listdata : ${listdata}">
+                    <td th:text="${listdata.id}"></td>
+                    <td th:text="${listdata.nama}"></td>
+                    <td th:text="${listdata.alamat}"></td>
+                    <td th:text="${listdata.kota}"></td>
+                    <td th:text="${listdata.provinsi}"></td>
+                    <td th:text="${listdata.tglRegistrasi}"></td>
+                    <td th:text="${listdata.status}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
